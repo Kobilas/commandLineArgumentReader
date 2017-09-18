@@ -6,14 +6,17 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	ifstream inFile;
-	int size;
+    char c;
+    int numChar;
 	for (int i = 1; i < argc; i++) {
+        numChar = 0;
 		inFile.open(argv[i]);
 		if (inFile.is_open()) {
-            		inFile.seekg (0, inFile.end);
-            		size = inFile.tellg();
+            while(inFile.get(c)){
+                numChar++;
+            }
 			inFile.close();
-			cout << argv[i] << " " << size << endl;
+			cout << argv[i] << " " << numChar << endl;
 		}
 		else {
 			cout << argv[i] << " FILE NOT FOUND" << endl;
